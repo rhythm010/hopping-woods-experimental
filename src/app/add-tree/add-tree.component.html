@@ -1,0 +1,30 @@
+<div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="start stretch" class="tree-pop-container">
+
+    <div mat-dialog-title fxFlex="20" class="header" fxLayoutAlign="center center">
+        {{headerName}}
+        <div class="cross-container" (click)="close()">
+            <img src="../assets/icons/icon-cancel.png" alt="del-icon" class="cross">
+        </div>
+    </div>
+
+    <!-- <div mat-dialog-content> -->
+
+    <div style="width: 100%" *ngIf="!(headerName.indexOf('feature') > 0) ||( headerName.toLowerCase().indexOf('tree') > 0)">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Name" [(ngModel)]="data.tree_name" (keydown.enter)="Add()">
+        </mat-form-field>
+    </div>
+
+    <div style="width: 100%" *ngIf="headerName.indexOf('Tree') < 0">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="data" [(ngModel)]="data.hint_anchor" (keydown.enter)="Add()">
+        </mat-form-field>
+    </div>
+
+    <div style="width: 100%" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" (click)="Add()">Add</button>
+    </div>
+
+</div>
+
+<!-- </div> -->

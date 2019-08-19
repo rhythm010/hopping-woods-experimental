@@ -1,0 +1,22 @@
+.tree-pop-container {
+  // border: 1px solid lightcoral;
+  padding: 10px;
+  position: relative;
+  .header {
+    width: 100%;
+    position: relative;
+  }
+  .cross-container {
+    position: absolute;
+    top: 6%;
+    right: 0%;
+    .cross {
+      width: 16px;
+      cursor: pointer;
+    }
+  }
+
+  .form-field {
+    width: 100%;
+  }
+}

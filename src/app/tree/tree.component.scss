@@ -1,0 +1,113 @@
+.outest-container {
+  border: 0.5px solid #d7d7d7;
+  border-radius: 8px;
+  //   padding: 10px;
+  height: 95%;
+  width: 200px;
+
+  .tree-name-container {
+    padding: 10px;
+    border-bottom: 0.5px solid lightgray;
+    // cursor: pointer;
+    position: relative;
+
+    .add-tree {
+      cursor: pointer;
+      position: absolute;
+      left: 3%;
+      top: 11%;
+    }
+
+    .edit-tree {
+      cursor: pointer;
+      position: absolute;
+      right: 3%;
+      top: 11%;
+    }
+  }
+  .tree-body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 7px;
+
+    .tree-body-container {
+      width: 100%;
+      height: 100%;
+
+      .add-new-leaf {
+        margin-bottom: 10px;
+      }
+
+      .leave-container {
+        padding: 10px;
+        border: 0.5px solid #c0bdbd;
+        overflow-x: hidden;
+        // background: #e9edee;
+      }
+
+      .message-unit {
+      }
+
+      .time-stamp {
+        width: 100%;
+        font-size: 10px;
+        font-family: Roboto;
+
+        .cross-container {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.text-main {
+  font-size: 17px;
+  //   line-break: auto;
+  white-space: normal;
+  font-weight: bold;
+  font-family: Roboto;
+  cursor: pointer;
+}
+
+.text-secondary {
+  cursor: pointer;
+  width: 93%;
+  padding: 3px;
+  padding-left: 8px;
+  // border-radius: 16px;
+  border: 1px solid #595a5b;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.select-Tree {
+  // background: lightgray;
+}
+
+.cross {
+  width: 13px;
+  cursor: pointer;
+}
+
+.cross-add-leaf {
+  width: 24px;
+  cursor: pointer;
+}
+
+.location-icon {
+  width: 100%;
+}
+
+.input-div {
+  // border: 1px solid #898787;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.input_mat-container {
+  font-size: 12px;
+  width: 156px;
+}

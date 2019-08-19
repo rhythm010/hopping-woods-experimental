@@ -1,0 +1,102 @@
+<div fxLayout="column" fxLayoutAlign="start stretch" class="outest-container" *ngIf="data">
+    <div fxFlex="15" fxLayout="column" fxLayoutAlign="center center" class="tree-name-container">
+
+        <div *ngIf="!canEditTitle"
+            style="cursor: pointer;font-family: Roboto;font-weight: lighter;white-space: pre-wrap;padding: 0 10px 0 10px; font-size: 20px; position: relative;"
+            (click)="selectTree()">
+            {{data.title}}
+        </div>
+
+        <div *ngIf="canEditTitle"
+            style="cursor: pointer; white-space: pre-wrap;padding: 0 10px 0 10px; font-size: 20px; position: relative;">
+            <input matInput placeholder="tree name" (keydown.enter)="editTree()" [(ngModel)]="editedText" type="text"
+                style="width: 100%">
+        </div>
+
+        <div class="cross-container add-tree" (click)="addLeaf()">
+            <img src="../assets/icons/icon-add.png" alt="del-icon" class="cross">
+        </div>
+
+        <div class="cross-container edit-tree" (click)="activateEditTree()">
+            <img src="../assets/icons/icon-edit.png" alt="del-icon" class="cross">
+        </div>
+
+
+
+    </div>
+
+    <div fxFlex fxLayoutAlign="center center" class="tree-body">
+        <div class="tree-body-container" [ngClass]="{'select-Tree':treeSelected}">
+
+            <!-- this is used for adding new leaf in the tree -->
+            <div *ngIf="showAddLeaf" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px"
+                class="add-new-leaf leave-container">
+                <div class="input-div">
+                    <mat-form-field class="input_mat-container">
+                        <input matInput placeholder="hint" [(ngModel)]="hintAnchor" style="width: 100%" type="text">
+
+                    </mat-form-field>
+                </div>
+
+                <div class="input-div">
+                    <mat-form-field class="input_mat-container">
+                        <input matInput placeholder="message" [(ngModel)]="message" (keydown.enter)="addLeafInfo()"
+                            style="width: 100%" type="text">
+                    </mat-form-field>
+                </div>
+
+                <div style="width: 100%">
+                    <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 100%">
+
+                        <div (click)="addLeafInfo()">
+                            <img src="../assets/icons/icon-add.png" alt="del-icon" class="cross-add-leaf">
+                        </div>
+
+                        <div class="cross-container" (click)="cancelLeafAddition()">
+                            <img src="../assets/icons/icon-cancel.png" alt="del-icon" class="cross">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div *ngIf="data.leaves.length > 0" fxLayoutAlign="start stretch" fxLayout="column" fxLayoutGap="10px"
+                class="tree-body-flex">
+
+                <div class="leave-container" *ngFor="let leaf of data.leaves.reverse(); let leafIdx= index">
+
+                    <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="5px" (click)="selectLeaf(leafIdx)">
+                        <div class="time-stamp" fxLayout="row" fxLayoutAlign="space-between center">
+
+                            <div>{{limitDate(leaf.time_stamp)}}</div>
+                            <div class="cross-container" (dblclick)="removeLeaf(leafIdx,leaf.leaf_id)">
+                                <img src="../assets/icons/icon-cancel.png" alt="del-icon" class="cross">
+                            </div>
+                        </div>
+                        <!-- <div fxLayoutAlign="start center" fxLayout="row" class="location-icon">
+                            <img src="../assets/icons/icon-location.png" alt="del-icon" class="cross">
+                        </div> -->
+                        <!-- {{leaf[0].hint_anchor}} -->
+                        <div  (click)="selectLeaf(leafIdx)" class="text-main">
+                            {{leaf.hint_anchor}}
+                        </div>
+
+                        <div class="text-secondary message-unit">
+                            <a *ngIf="!(leaf.message.indexOf('http') < 0)" [href]="leaf.message"
+                                target="_blank">{{leaf.message}}</a>
+                            <span *ngIf="leaf.message.indexOf('http') < 0">{{leaf.message}}</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div *ngIf="data.leaves.length === 0" fxLayoutAlign="center center" style="width=100%">
+                    list empty
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- this is going to work -->
+</div>

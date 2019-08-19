@@ -1,0 +1,103 @@
+.outest-container {
+  width: 100%;
+  height: 100%;
+
+  .work-space-container {
+    position: relative;
+    border: 1px solid #e2e2e2;
+    padding: 20px;
+    width: 100%;
+    overflow: auto;
+  }
+
+  .refresh-everything {
+    position: absolute;
+    right: 1%;
+    top: 1%;
+  }
+
+  .config-container {
+    border: 1px solid #c0bdbd;
+
+    .details-container {
+      padding: 10px;
+      width: 100%;
+      height: 100%;
+
+      .select-tree {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        .cross-container {
+          position: absolute;
+          right: 1%;
+        }
+      }
+    }
+
+    .add-tree-container {
+      border-right: 1px solid #c0bdbd;
+      height: 100%;
+      // padding: 20px;
+      position: relative;
+
+      .tab-group-container {
+        margin-right: 0px !important;
+        // height: 49px !important;
+        width: 100%;
+
+        .mat-tab-body-wrapper {
+          height: 100% !important;
+        }
+
+        .inner-container-tab {
+          width: 100%;
+          height: 100%;
+        }
+
+        .feature-stack-container {
+          .add-feature {
+            height: 100%;
+          }
+        }
+      }
+
+      .feature-stack {
+        // position: absolute;
+        // right: 3%;
+        // top: 7%;
+        cursor: pointer;
+      }
+
+      .list-feature {
+        overflow-y: auto;
+        overflow-x: hidden;
+        .every-feature {
+          font-family: Roboto;
+          font-size: 12px;
+          padding: 5px;
+          border: 1px solid lightseagreen;
+        }
+      }
+
+      .add-container {
+        width: 33px;
+
+        .add-icon {
+          width: 33px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.cross {
+  width: 17px;
+  cursor: pointer;
+}
+
+.big-cross{
+  width: 25px;
+  cursor: pointer;
+}

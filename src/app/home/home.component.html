@@ -1,0 +1,111 @@
+<div fxLayout="column" fxLayoutAlign="none none" fxLayoutGap="10px" class="outest-container">
+
+    <div fxFlex="80" class="work-space-container">
+
+        <div fxLayout="row" fxLayoutAlign="start none" fxLayoutGap="10px" style="height: 100%">
+            <div *ngFor="let tree of treeList; let treeIdx = index">
+                <app-tree [data]="tree" (itemSelect)="itemSelected($event)">
+                </app-tree>
+            </div>
+        </div>
+
+        <div class="refresh-everything">
+            <img src="../assets/icons/icon-refresh.png" alt="del-icon" class="cross">
+        </div>
+
+
+    </div>
+
+    <div fxFlex fxLayoutAlign="stretch stretch" fxLayout="row" class="config-container">
+        <div fxFlex fxLayoutAlign="stretch stretch" fxLayout="row" fxLayoutGap="10px" class="add-tree-container">
+
+            <mat-tab-group class="tab-group-container">
+                <mat-tab label="Add tree">
+                    <div class="add-container inner-container-tab" fxLayoutAlign="center center" (click)="addTree()">
+                        <img src="../assets/icons/icon-add.png" alt="add-icon" class="add-icon">
+                    </div>
+                </mat-tab>
+
+                <mat-tab label="Feature-stack">
+                    <div class="inner-container-tab feature-stack-container" fxLayout="row">
+
+                        <div style="height: 100%" fxFlex="30" fxLayoutAlign="center center">
+
+                            <div class="feature-stack" (click)="addFeature()">
+                                <img src="../assets/icons/icon-add.png" alt="add-icon" class="add-icon big-cross">
+                            </div>
+
+                        </div>
+
+                        <div style="height: 100%" fxFlex>
+                            <div class="list-feature" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="3px">
+
+                                <div class="every-feature" *ngFor="let feature of featureList">
+                                    <div fxLayout="row" fxLayoutAlign="start center">
+                                        <div fxFlex="90">
+                                            {{feature.feature}}
+                                        </div>
+                                        <div fxFlex>
+                                            p
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </mat-tab>
+
+                <mat-tab label="Search">
+                </mat-tab>
+            </mat-tab-group>
+
+            <!-- <div fxLayout="column">
+                <div (click)="getAllTrees()">getAllTrees</div>
+                <div (click)="addTreeIntoFirebase()">Get all leaves</div>
+                <div>Get all trees (this does not work)</div>
+            </div> -->
+
+
+
+        </div>
+        <div fxFlex fxLayoutAlign="center center" class="details-container">
+            <!-- this condition for the existance of a leaf and its details -->
+            <div fxLayout="column" fxLayoutGap="10px" *ngIf="selectedItem['message']">
+                <div style="font-size:20px; font-weight: bold"><span>{{selectedItem.hint_anchor}}</span></div>
+                <div style="font-size: 13px; color: #e24178; border: 1px solid lightgray; padding: 3px">
+                    <span>{{selectedItem.message}}</span></div>
+                <div style="font-size: 10px">Time: <span>{{limitDate(selectedItem.time_stamp)}}</span></div>
+                <div style="font-size:">Location</div>
+            </div>
+
+            <!-- this is for the tree details -->
+            <div class="select-tree" *ngIf="!selectedItem['message'] && selectedItem !== ''"
+                fxLayoutAlign="cente center">
+                <div>
+                    <div>Tree Name</div>
+                    <div>{{selectedItem.tree_name}}</div>
+                </div>
+                <div class="cross-container" (dblclick)="removeTree(selectedItem.tree_id)">
+                    <img src="../assets/icons/icon-cancel.png" alt="del-icon" class="cross">
+                </div>
+            </div>
+
+            <div *ngIf="selectedItem === ''">
+                Nothing selected
+            </div>
+
+            <!-- this is for the list of features that needs to be added -->
+            <div *ngIf="featureListSelected" style="width: 100%" fxLayout="column" fxLayoutAlign="start stretch"
+                fxLayoutGap="5px">
+                <div *ngFor="let feature of featureList">
+                    <div *ngIf="feature.featureName">
+                        {{feature.featureName}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
